@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class TiledBackground : MonoBehaviour {
 
-	// Use this for initialization
+	public int textureSize = 32;
+	public bool scaleHorizontally = true;
+	public bool scaleVertically = true;
+
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+
+		// How many tiles fit in the current screen height and width, 
+		// How many times it has to repeat	
+
+		var newWidth = !scaleHorizontally ? 1 : Mathf.Ceil (Screen.width / (textureSize * PixelPerfectCamera.scale));
+		var newHeight = !scaleVertically ? 1 : Mathf.Ceil (Screen.height / (textureSize * PixelPerfectCamera.scale));
+
+		// Always use Vector3 for scaling
+		transform.localScale = new Vector3 (newWidth * textureSize, newHeight * textureSize, 1);
+
+		GetComponent<Renderer> ().material.mainTextureScale = new Vector3 (newWidth, newHeight, 1);
 	}
 }
