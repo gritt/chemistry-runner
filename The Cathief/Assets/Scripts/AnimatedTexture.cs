@@ -24,7 +24,7 @@ public class AnimatedTexture : MonoBehaviour {
 	void Update () {
 
 		// The delta time represents the difference in time 
-		// Between on frame rendering to the next
+		// Between one frame rendering to the next
 		offset += speed * Time.deltaTime;
 
 		material.SetTextureOffset ("_MainTex", offset);
