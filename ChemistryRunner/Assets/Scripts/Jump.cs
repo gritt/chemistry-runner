@@ -5,6 +5,7 @@ using UnityEngine;
 public class Jump : MonoBehaviour {
 
 	public float jumpSpeed = 240f;
+	public float forwardSpeed = 20;
 
 	private Rigidbody2D body2d;
 	private InputState inputState;
@@ -19,7 +20,7 @@ public class Jump : MonoBehaviour {
 
 		if (inputState.standing) {
 			if (inputState.actionButton) {
-				body2d.velocity = new Vector2 (0, jumpSpeed);
+				body2d.velocity = new Vector2 (transform.position.x < 0 ? forwardSpeed : 0, jumpSpeed);
 			}
 		}
 	}
