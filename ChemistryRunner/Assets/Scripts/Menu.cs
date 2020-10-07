@@ -11,4 +11,10 @@ public class Menu : MonoBehaviour
     public void restart() {
        SceneManager.LoadScene(0);
     }
+    public void pause() {
+        Time.timeScale =0;
+    }
+    public void resume() {
+        Time.timeScale =1;
+    }
 }
